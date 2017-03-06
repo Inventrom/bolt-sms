@@ -1,22 +1,20 @@
-from flask import (json)
+import json
 import time
 import requests
 from twilio.rest import TwilioRestClient
 
 def send_sms(temp):
     """Sends sms via Twilio"""
-    sid='your_sid_key'
-    token='your_token'
-    body= "Temperature is cross threashold .Current temperature is %s " % temp
-    to= 'your_number'
-    from_number= 'number_from_twilio'
-    ACCOUNT_SID = sid
-    AUTH_TOKEN = token
+    ACCOUNT_SID = 'your_sid_key'
+    AUTH_TOKEN = 'your_token'
+    body = "Temperature is cross threashold .Current temperature is %s " % temp
+    to = 'your_number'
+    from_number = 'number_from_twilio'
     client = TwilioRestClient(ACCOUNT_SID, AUTH_TOKEN)
     message = client.messages.create(
-        body=body,
-        to=to,
-        from_=from_number,
+        body = body,
+        to = to,
+        from_ = from_number,
         )
     print message.sid
     res = str(message.sid)
