@@ -39,6 +39,7 @@ while True:
         # Replace device_name with your original device name
         response = requests.get('http://cloud.boltiot.com/remote/api_key/analogRead?pin=A0&deviceName=device_name')
         data = json.loads(response.text)
+        var = int(data['value'])
         if data['value'] > 10:
                 print  "temperature is=", data['value']
                 print "sending sms"
